@@ -1,3 +1,2 @@
-input/
-day1.hi
-day1.o
+*
+!*.hs
