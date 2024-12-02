@@ -16,12 +16,10 @@ main = do
 
 part1 :: String -> Int
 part1 dataStr = do
-  countBy goodDifferences (listDifference <$> tokenize dataStr)
+  countBy goodDifferences (diff <$> tokenize dataStr)
 
-listDifference :: [Int] -> [Int]
-listDifference [] = []
-listDifference [_] = []
-listDifference (x:xs) = (head xs - x) : listDifference xs
+diff :: [Int] -> [Int]
+diff xs = zipWith (-) xs (tail xs)
 
 goodDifferences :: [Int] -> Bool
 goodDifferences diffs = all (\d -> d > 0 && d <= 3) diffs || all (\d -> d < 0 && d >= -3) diffs
